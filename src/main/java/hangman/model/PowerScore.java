@@ -8,10 +8,24 @@ public class PowerScore implements GameScore{
 	* @param incorrectCount valor con la que se penaliza de -8 puntos.
 	*@return Puntaje obtenido  
 	**/
+	public int score=0;
 	public int calculateScore(int correctCount, int incorrectCount){
+		if(correctCount <0 || incorrectCount <0 ){
+            System.out.println("Parametros Invalidos.");
+        }
+        int respuesta = 0;
+        for(int i=0; i<correctCount;i++){
+            respuesta += Math.pow(5,i+1);
+        }
+        respuesta -= incorrectCount*8;
+        if (respuesta < 0){
+            respuesta = 0;
+        }else if(respuesta > 500){
+            respuesta = 500;
+        }
+        return respuesta;
 
-
-        return 0;
+        
     }
 
 
